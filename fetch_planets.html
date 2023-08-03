@@ -5,11 +5,13 @@
       <script>
          window.addEventListener("load", function(){
             // TODO: fetch planets JSON
-            async function fetchProductData()   {
-               let response = await fetch("https://handlers.education.launchcode.org/static/planets.json");
-               let data = await response.json();
-               console.log(response);
-            }
+            fetch("https://handlers.education.launchcode.org/static/planets.json").then(function (response) {
+               response.json().then(function (data)   {
+                  console.log(data);
+               });
+            });
+            const destination = document.getElementById("destination");
+            destination.innerHTML = `<h3>Planet ${data[0].name}</h3>`;
          });
       </script>
    </head>
